@@ -1,0 +1,38 @@
+debug: false
+dev: false
+port: 4000
+logger:
+  silent: true
+  message:
+    static:
+      color: cyan
+  file:
+    newLogFileFrequencey: '24h'
+    zipArchive: true
+cookies:
+  signed: true
+  secure: true
+  httpOnly: true
+  maxAge: 86400000
+  sameSite: 'lax'
+graphql:
+  enabled: true
+  uri: '/graphql'
+mongodb:
+  enabled: true
+  uri: '127.0.0.1'
+  port: 27017
+  name: ts-template
+password:
+  minLength: 8
+  minLowercase: 1
+  minUppercase: 1
+  minNumbers: 1
+  minSymbols: 1
+  reset:
+    linkCooldownMinutes: 60
+username:
+  maxLength: 16
+  minLength: 3
+frontend:
+  url: http://localhost:3000
