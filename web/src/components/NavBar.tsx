@@ -57,7 +57,7 @@ export const NavBar: React.FC<NavBarProps> = disableSSR(({}) => {
           >
             {data.currentUser.username}
           </MenuButton>
-          <MenuList>
+          <MenuList zIndex={1000}>
             <Link as={NextLink} href='/settings'>
               <MenuItem>
                 <Box float='left'>Settings</Box>
@@ -87,6 +87,19 @@ export const NavBar: React.FC<NavBarProps> = disableSSR(({}) => {
       <Link as={NextLink} href='/'>
         <Img src='/' alt='home' />
       </Link>
+
+      <Box mr='10' ml='10'>
+        <Link as={NextLink} href='/about'>
+          About
+        </Link>
+      </Box>
+
+      <Box>
+        <Link as={NextLink} href='/blog'>
+          Blog
+        </Link>
+      </Box>
+
       <Flex ml={'auto'}>
         <Flex alignItems='center' mr={5}>
           {body}

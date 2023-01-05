@@ -94,9 +94,9 @@ export class UserResolver {
   async login(
     @Arg('usernameOrEmail') usernameOrEmail: string,
     @Arg('password') password: string,
-    @Ctx() { req }: MyContext,
+    @Ctx() { req, res }: MyContext,
   ): Promise<UserResponse> {
-    return await login(usernameOrEmail, password, req);
+    return await login(usernameOrEmail, password, req, res);
   }
 
   @Mutation(() => Boolean)

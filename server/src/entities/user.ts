@@ -89,6 +89,10 @@ class User extends DocumentCT {
   @Prop({ type: Date, default: null })
   public lastPasswordReset: Date;
 
+  @Field()
+  @Prop({ type: Boolean, default: false })
+  public isAdmin: boolean;
+
   public static build(attribites: UserAttributes) {
     const UserModel = getModelForClass(User);
 

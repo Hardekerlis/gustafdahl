@@ -88,6 +88,7 @@ export type User = {
   email?: Maybe<Scalars['String']>;
   emailConfirmed?: Maybe<Scalars['Boolean']>;
   id: Scalars['ID'];
+  isAdmin: Scalars['Boolean'];
   username: Scalars['String'];
 };
 
@@ -147,7 +148,7 @@ export type RegisterMutation = { __typename?: 'Mutation', register: { __typename
 export type CurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CurrentUserQuery = { __typename?: 'Query', currentUser?: { __typename?: 'User', id: string, username: string } | null };
+export type CurrentUserQuery = { __typename?: 'Query', currentUser?: { __typename?: 'User', isAdmin: boolean, id: string, username: string } | null };
 
 export const ErrorFragmentFragmentDoc = gql`
     fragment ErrorFragment on FieldError {
@@ -232,6 +233,7 @@ export const CurrentUserDocument = gql`
     query CurrentUser {
   currentUser {
     ...UserFragment
+    isAdmin
   }
 }
     ${UserFragmentFragmentDoc}`;

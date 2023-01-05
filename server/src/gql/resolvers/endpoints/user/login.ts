@@ -1,5 +1,5 @@
 import { UserModel } from 'entities';
-import { Request } from 'express';
+import { Request, Response } from 'express';
 import Logger from 'frictionless-logger';
 import { Password } from 'lib';
 import { MiddlewareFn } from 'type-graphql';
@@ -31,6 +31,7 @@ export const login = async (
   usernameOrEmail: string,
   password: string,
   req: Request,
+  res: Response,
 ): Promise<UserResponse> => {
   logger.debug('Looking up user');
   const user = await UserModel.findOne({

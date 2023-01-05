@@ -19,7 +19,7 @@ mongodb:
   enabled: true
   uri: '127.0.0.1'
   port: 27017
-  name: ts-template
+  name: personal
 password:
   minLength: 1
   minLowercase: 0

@@ -16,7 +16,7 @@ const NotFound: React.FC<{}> = ({}) => {
       >
         <Box>
           <Heading as='h2' size='2xl'>
-            Whoops! We couldn't locate the requested resource
+            Whoops! I looked everywhere but couldn't locate the requested page
           </Heading>
           <Text fontSize='3xl'>404 error</Text> <Box></Box>
           <Box mt={10}>
