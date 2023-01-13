@@ -4,7 +4,8 @@ import Logger from 'frictionless-logger';
 import { Password } from 'lib';
 import { MiddlewareFn } from 'type-graphql';
 import validator from 'validator';
-import { FieldError, UserResponse } from './base-classes';
+import { UserResponse } from './base-classes';
+import { FieldError } from '../../lib/base-classes';
 
 const logger = new Logger({
   message: {

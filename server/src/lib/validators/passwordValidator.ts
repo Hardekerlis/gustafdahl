@@ -1,5 +1,5 @@
 import Logger from 'frictionless-logger';
-import { FieldError } from 'gql/resolvers/endpoints/user/base-classes';
+import { FieldError } from 'gql/resolvers/lib/base-classes';
 import { config } from 'lib';
 import validator from 'validator';
 

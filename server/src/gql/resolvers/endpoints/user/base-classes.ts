@@ -1,14 +1,6 @@
 import { User } from 'entities';
-import { Field, ObjectType } from 'type-graphql';
-
-@ObjectType()
-export class FieldError {
-  @Field()
-  field: string;
-
-  @Field()
-  message: string;
-}
+import { FieldError } from 'gql/resolvers/lib/base-classes';
+import { ObjectType, Field } from 'type-graphql';
 
 @ObjectType()
 export class UserResponse {

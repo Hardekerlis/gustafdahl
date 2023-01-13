@@ -7,6 +7,7 @@ interface WrapperProps {
   children: React.ReactNode;
   variant?: WrapperVariant;
   loading?: boolean;
+  pt?: string;
 }
 
 enum Sizes {
@@ -19,6 +20,7 @@ export const Wrapper: React.FC<WrapperProps> = ({
   children,
   variant = 'regular',
   loading,
+  pt,
 }) => {
   const getMaxWidth = () => {
     switch (variant) {
@@ -37,7 +39,13 @@ export const Wrapper: React.FC<WrapperProps> = ({
   };
 
   return (
-    <Box pt='100px' mx='auto' maxW={getMaxWidth()} w='100%' h='100vh'>
+    <Box
+      pt={pt ? pt : '100px'}
+      mx='auto'
+      maxW={getMaxWidth()}
+      w='100%'
+      h='100vh'
+    >
       {loading ? (
         <Flex justifyContent='center' alignItems='center' h='100%' w='100%'>
           <Spinner size='xl' />

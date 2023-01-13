@@ -1,0 +1,13 @@
+mutation CreatePost($title: String!) {
+  createPost(title: $title) {
+    errors {
+      ...ErrorFragment
+    }
+    post {
+      id
+      createdAt
+      updatedAt
+      title
+    }
+  }
+}

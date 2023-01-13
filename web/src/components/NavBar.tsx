@@ -94,11 +94,21 @@ export const NavBar: React.FC<NavBarProps> = disableSSR(({}) => {
         </Link>
       </Box>
 
-      <Box>
+      <Box mr='10'>
         <Link as={NextLink} href='/blog'>
           Blog
         </Link>
       </Box>
+
+      {data && data.currentUser && data.currentUser.isAdmin ? (
+        <Box>
+          <Link as={NextLink} href='/dashboard'>
+            Dashboard
+          </Link>
+        </Box>
+      ) : (
+        <></>
+      )}
 
       <Flex ml={'auto'}>
         <Flex alignItems='center' mr={5}>

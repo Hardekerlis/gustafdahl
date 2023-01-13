@@ -12,3 +12,13 @@ declare module '@editorjs/header' {
   import Header from '@editorjs/header';
   export = Header;
 }
+
+declare module '@editorjs/code' {
+  import Code from '@editorjs/code';
+  export = Code;
+}
+
+declare module '@editorjs/embed' {
+  import Embed from '@editorjs/embed';
+  export = Embed;
+}

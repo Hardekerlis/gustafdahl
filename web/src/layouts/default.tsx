@@ -6,17 +6,19 @@ interface DefaultLayoutProps {
   children?: React.ReactNode;
   variant?: WrapperVariant;
   loading?: boolean;
+  pt?: string;
 }
 
 export const DefaultLayout: React.FC<DefaultLayoutProps> = ({
   children,
   variant,
   loading = false,
+  pt,
 }) => {
   return (
     <>
       <NavBar />
-      <Wrapper loading={loading} variant={variant}>
+      <Wrapper pt={pt} loading={loading} variant={variant}>
         {children}
       </Wrapper>
     </>

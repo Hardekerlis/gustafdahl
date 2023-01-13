@@ -1,0 +1,14 @@
+fragment PostFragment on Post {
+  published
+  id
+  createdAt
+  updatedAt
+  blocks {
+    blockId
+    data {
+      level
+      text
+    }
+    type
+  }
+}

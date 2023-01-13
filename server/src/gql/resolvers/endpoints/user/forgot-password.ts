@@ -5,7 +5,7 @@ import { config, RedisClient, sendEmail } from 'lib';
 import { DateTime } from 'luxon';
 import { nanoid } from 'nanoid';
 import { Field, ObjectType } from 'type-graphql';
-import { FieldError } from './base-classes';
+import { FieldError } from '../../lib/base-classes';
 
 const logger = new Logger({
   message: {
