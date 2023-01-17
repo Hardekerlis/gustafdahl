@@ -8,6 +8,7 @@ interface EditorInitializeProps {
   children?: React.ReactNode;
   editorCore: any;
   onChange?(): void;
+  title: string;
 }
 
 export interface EditorCore {
@@ -19,6 +20,7 @@ export interface EditorCore {
 const EditorInitialize: React.FC<EditorInitializeProps> = ({
   editorCore,
   onChange,
+  title,
 }) => {
   const Editor = createReactEditorJS();
 
@@ -33,6 +35,11 @@ const EditorInitialize: React.FC<EditorInitializeProps> = ({
 
   //   return savedData;
   // }, []);
+
+  const splitTitle = title.split('');
+
+  const capitalized = splitTitle[0].toUpperCase();
+  splitTitle[0] = capitalized;
 
   return (
     <>
@@ -56,7 +63,16 @@ const EditorInitialize: React.FC<EditorInitializeProps> = ({
           onChange={onChange}
           defaultValue={{
             time: 1635603431943,
-            blocks: [],
+            blocks: [
+              {
+                id: 'header_id',
+                data: {
+                  text: splitTitle.join(''),
+                  level: 1,
+                },
+                type: 'header',
+              },
+            ],
           }}
           tools={EDITOR_JS_TOOLS}
           inlineToolbar={true}

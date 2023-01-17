@@ -4,8 +4,6 @@ import {
   Flex,
   Heading,
   Input,
-  InputElementProps,
-  Link,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -19,9 +17,8 @@ import {
 import { useCreatePostMutation, useCurrentUserQuery } from 'generated/graphql';
 import { DefaultLayout } from 'layouts/default';
 import { withUrqlClient } from 'next-urql';
-import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import React, { ReactElement, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { createUrqlClient } from 'utils/createUrqlClient';
 
 // export const getServerSideProps = async (ctx: NextContext) => {

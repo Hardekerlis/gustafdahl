@@ -34,6 +34,11 @@ export type Data = {
   text: Scalars['String'];
 };
 
+export type DataInput = {
+  level?: InputMaybe<Scalars['String']>;
+  text: Scalars['String'];
+};
+
 export type FieldError = {
   __typename?: 'FieldError';
   field: Scalars['String'];
@@ -62,6 +67,7 @@ export type Mutation = {
   login: UserResponse;
   logout: Scalars['Boolean'];
   register: UserResponse;
+  updatePost?: Maybe<PostResponse>;
 };
 
 
@@ -90,6 +96,11 @@ export type MutationRegisterArgs = {
   data: UserRegisterInput;
 };
 
+
+export type MutationUpdatePostArgs = {
+  data: Array<UpdatePostUpdate>;
+};
+
 export type Post = {
   __typename?: 'Post';
   blocks?: Maybe<Array<Block>>;
@@ -98,6 +109,12 @@ export type Post = {
   published?: Maybe<Scalars['String']>;
   title: Scalars['String'];
   updatedAt: Scalars['String'];
+};
+
+export type PostInput = {
+  blockId: Scalars['String'];
+  data: DataInput;
+  type: Scalars['String'];
 };
 
 export type PostResponse = {
@@ -122,6 +139,13 @@ export type QueryGetPostArgs = {
 
 export type QueryGetUserArgs = {
   id: Scalars['ID'];
+};
+
+export type UpdatePostUpdate = {
+  id: Scalars['String'];
+  post: Array<PostInput>;
+  publish: Scalars['Boolean'];
+  title: Scalars['String'];
 };
 
 export type User = {

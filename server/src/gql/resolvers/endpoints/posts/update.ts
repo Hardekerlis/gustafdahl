@@ -1,4 +1,5 @@
 import { InputType, Field, MiddlewareFn } from 'type-graphql';
+import { PostResponse } from './base-classes';
 
 @InputType()
 class DataInput {
@@ -36,7 +37,7 @@ export class UpdatePostUpdate {
   public post: PostInput[];
 }
 
-export const updatePost = async (args: UpdatePostUpdate[]) => {
+export const updatePost = async (args: UpdatePostUpdate[]): Promise<PostResponse> => {
   console.log(args);
 };
 

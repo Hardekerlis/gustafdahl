@@ -1,11 +1,23 @@
-import { Box, Button } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
+} from '@chakra-ui/react';
 import { useCreatePostMutation } from 'generated/graphql';
 import { useIsAuth } from 'hooks/useIsAuth';
 import { DefaultLayout } from 'layouts/default';
 import { withUrqlClient } from 'next-urql';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createUrqlClient } from 'utils/createUrqlClient';
 import { EditorCore } from 'utils/editorInitialize';
 import { getCurrentUserServerSide } from 'utils/getCurrentUserServerSide';
@@ -28,6 +40,7 @@ export const getServerSideProps = async (ctx: NextContext) => {
 
 const Create: React.FC<{}> = ({}) => {
   useIsAuth();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const router = useRouter();
 
@@ -64,37 +77,62 @@ const Create: React.FC<{}> = ({}) => {
     }
   }, []);
 
+  useEffect(() => {
+    return () => {
+      onOpen();
+    };
+  }, []);
+
   const changeHandler = useCallback(() => {
     console.log('change', draftSaved);
     if (draftSaved) setDraftSaved(false);
   }, [draftSaved]);
 
   return (
-    <DefaultLayout pt='80px'>
-      <Box height='60px'>
-        <Button
-          mr='10px'
-          onClick={() => {
-            handleSave(true);
-          }}
-          isLoading={fetching}
-        >
-          Publish
-        </Button>
+    <>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Create post</ModalHeader>
+          <ModalBody></ModalBody>
+          <ModalFooter>
+            <Button bgColor='green' mr='3'>
+              Leave
+            </Button>
+            <Button onClick={onClose}>Cancel</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+      <DefaultLayout pt='80px'>
+        <Box height='60px'>
+          <Button
+            mr='10px'
+            onClick={() => {
+              handleSave(true);
+            }}
+            isLoading={fetching}
+          >
+            Publish
+          </Button>
 
-        <Button
-          onClick={() => {
-            handleSave(false);
-          }}
-          isLoading={fetching}
-        >
-          {draftSaved ? 'Drafted saved' : 'Save draft'}
-        </Button>
-      </Box>
-      <Box bgColor='white' color='black' height='100%'>
-        <Editor onChange={() => changeHandler()} editorCore={editorCore} />
-      </Box>
-    </DefaultLayout>
+          <Button
+            onClick={() => {
+              handleSave(false);
+            }}
+            isLoading={fetching}
+          >
+            {draftSaved ? 'Drafted saved' : 'Save draft'}
+          </Button>
+        </Box>
+        <Box bgColor='white' color='black' height='100%'>
+          <Editor
+            title={router.query.title as string}
+            onChange={() => changeHandler()}
+            editorCore={editorCore}
+          />
+        </Box>
+      </DefaultLayout>
+    </>
   );
 };
 
